@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="d-flex flex-grow-1 position-relative">
+        <div class="d-flex align-items-start flex-column  position-relative w-75">
+            <!-- Cards -->
+            <div class=" mb-auto p-2 d-flex flex-row flex-wrap justify-content-evenly">
+                {% for eda_card in eda_cards %}
+                    <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                        <div class="card-header">Header</div>
+                        <div class="card-body">
+                        <h5 class="card-title">{{eda_card.title}}</h5>
+                        <p class="card-text">{{eda_card.description}}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+    
+
+                <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Audio File</div>
+                    <div class="card-body">
+                    <h5 class="card-title text-center">Upload Audio File</h5>
+                    <div class="text-center">
+                        <!-- Button trigger modal ADD button -->
+                        <a href="{{url_for('cards.add_card')}}" class="btn btn-primary">
+                            <span class="material-symbols-sharp" id="add_card">add</span>
+                        </a>
+                    </div>
+                    </div>
+                </div>
+
+                <div class="card text-dark bg-light mb-3" style="max-width: 18rem;">
+                    <div class="card-header">YouTube Video</div>
+                    <div class="card-body">
+                    <h5 class="card-title text-center">Get from YouTube</h5>
+                    <div class="text-center">
+                        <!-- Button trigger modal ADD button -->
+                        <a href="{{url_for('cards.add_card')}}" class="btn btn-primary">
+                            <span class="material-symbols-sharp" id="add_cards">add</span>
+                        </a>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% block add_card %}
+    {% endblock add_card %}
+{% endblock content %}
+
+{% block script %}
+{%endblock script %}

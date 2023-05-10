@@ -1,0 +1,50 @@
+{%extends "home.html" %}
+{% block add_card %}
+    <!-- Modal to upload dataset -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Upload</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form method="POST" action="" enctype="multipart/form-data">
+                    {{ form.hidden_tag() }}
+                        <div class="modal-body">
+                                <fieldset class="form-group">
+                                    <div class="form-group">
+                                        {{ form.fileName.label(class="form-control-label") }}
+                                        <br>
+                                        {{ form.fileName(class="form-control-file") }}
+                                        {% if form.fileName.errors %}
+                                            {% for error in form.fileName.errors %}
+                                                <span class="text-danger">{{ error }}</span></br>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                </fieldset>
+
+                        </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <!-- <button type="button" class="btn btn-primary">Send message</button> -->
+                        <div class="mt-5 text-center">
+                            <div class="form-group">
+                                {{ form.submit(class="btn btn-primary profile-button") }}
+                            </div>
+                        </div>  
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Ends -->
+{% endblock add_card%}
+
+{% block script %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#exampleModal').modal("show")
+        });
+    </script>
+{% endblock script%}
